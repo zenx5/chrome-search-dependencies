@@ -13,6 +13,7 @@
                 "https://github.com/*"
             ],
             "js":[
+                "src/js/constants.js",
                 "src/js/search.js",
                 "src/js/observer.js"
             ]
