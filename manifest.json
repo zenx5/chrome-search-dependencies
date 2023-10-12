@@ -10,10 +10,16 @@
     "content_scripts":[
         {
             "matches":[
+                "https://github.com/*",
                 "https://github.com/*?tab=repositories"
             ],
             "js":[
-                "src/js/search.js"
+                "src/js/constants.js",
+                "src/js/search.js",
+                "src/js/observer.js"
+            ],
+            "css":[
+                "src/css/iframe.css"
             ]
         }
     ],
