@@ -1,6 +1,5 @@
-(()=>{
-    console.log("search.js")
-    addEventListener('load', event => {
+const insertSearch = () => {
+
         list = document.querySelector("#user-repositories-list")
         const search = document.createElement("iframe")
         search.style.border = "none"
@@ -11,5 +10,5 @@
         search.style.padding = "0px";
         search.src = chrome.runtime.getURL("src/html/search.html")
         list.before( search )
-    })
-})()
+
+}
