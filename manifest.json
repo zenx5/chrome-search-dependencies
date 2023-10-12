@@ -17,6 +17,9 @@
                 "src/js/constants.js",
                 "src/js/search.js",
                 "src/js/observer.js"
+            ],
+            "css":[
+                "src/css/iframe.css"
             ]
         }
     ],
