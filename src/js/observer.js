@@ -1,6 +1,6 @@
 try{
-    const tabrepo = document.querySelector('#repositories-tab')
-    tabrepo.addEventListener('click', ()=>{
+    const tabRepo = document.querySelector('#repositories-tab')
+    tabRepo.addEventListener('click', ()=>{
         SEARCH_INSERTED = false
     })
     const observer = new MutationObserver( function(mutations) {
@@ -8,13 +8,13 @@ try{
             const searchParams = new URLSearchParams( document.location.search.slice(1) )
             if( searchParams.has("tab") && (searchParams.get("tab") === 'repositories') && !SEARCH_INSERTED ) {
                 SEARCH_INSERTED = true
-                insertSearch()
+                insertFrame()
             }
         }
     })
 
-    if( tabrepo ) {
-        observer.observe( tabrepo, {
+    if( tabRepo ) {
+        observer.observe( tabRepo, {
             subtree:true,
             attributes:true,
             childList: true
