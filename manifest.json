@@ -15,7 +15,8 @@
             ],
             "js":[
                 "src/js/constants.js",
-                "src/js/search.js",
+                "src/js/messaging.js",
+                "src/js/frame.js",
                 "src/js/observer.js"
             ],
             "css":[
