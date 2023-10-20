@@ -1,15 +1,25 @@
-const insertSearch = () => {
+(async ()=>{
+    const btn = document.querySelector('#chrome-extension-github-search-button')
 
-        list = document.querySelector("#user-repositories-list")
-        const user = document.location.pathname.slice(1)
-        const search = document.createElement("iframe")
-        search.style.border = "none"
-        search.style.width = "100%"
-        search.style.backgroundColor = "transparent"
-        // search.style.height = "120px"
-        search.style.margin = "0px";
-        search.style.padding = "0px";
-        search.src = chrome.runtime.getURL("src/html/search.html?user="+user)
-        list.before( search )
+    btn.addEventListener('click', async event => {
+        btn.setAttribute('disabled', "")
+        btn.innerText = 'Searching...'
+        const extension = await chrome.management.getSelf()
+        const queries = new URLSearchParams(document.location.search)
+        const user = queries.get('user')
+        //const url = `https://search-dependencies.vercel.app/api/extension/${extension.id}?user=${user}&query=${target.value}`
+        const target = document.querySelector('#chrome-extension-github-search-input')
+        try{
+            const response = await fetch(`http://localhost:3000/api/extension/${extension.id}?user=${user}&query=${target.value}`)
+            const result = await response.json()
+            console.log( result )
+            chrome.runtime.sendMessage( extension.id, result)
+        } catch( error ) {
+            console.log("Error en 'search-dependencie.js'", error)
+        } finally {
+            btn.removeAttribute("disabled")
+            btn.innerText = 'Search'
+        }
+    } )
 
-}
+})()
